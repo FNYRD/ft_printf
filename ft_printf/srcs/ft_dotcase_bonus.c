@@ -4,7 +4,7 @@
 // else, we'll use precision as positions
 // in cases with just the flag '.' (without '-')we'll use ft_putminzero with the 0 flag
 // in case fo flag == 1 it means that there's a '-' (left indentation) present
-void	ft_dotcase(char *str, unsigned long positions, unsigned long precision, int flag)
+void	ft_dotcase(char *str, unsigned long long positions, unsigned long long precision, unsigned long long flag)
 {
 	if (precision < positions)
 	{
@@ -23,5 +23,9 @@ void	ft_dotcase(char *str, unsigned long positions, unsigned long precision, int
 		}
 	}
 	else
+	{
+		if (str[0] == '-')
+			precision++;
 		ft_putminzero(str, precision, 0);
+	}
 }

@@ -4,6 +4,7 @@
         "ft_printf.h": "c",
         "libft.h": "c",
         "stddef.h": "c",
-        "__config": "c"
+        "__config": "c",
+        "stdio.h": "c"
     }
 }

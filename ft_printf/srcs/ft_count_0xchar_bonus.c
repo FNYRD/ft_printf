@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int ft_count_0xchar(unsigned int n)
+int ft_count_0xchar(unsigned long long n)
 {
 	if (n > 0)
 	{

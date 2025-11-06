@@ -1,9 +1,9 @@
 #include "ft_printf.h"
 
-void	ft_hexa_void(unsigned int n, char x)
+void	ft_hexa_void(unsigned long long n, char x)
 {
-	unsigned int	res;
-    unsigned int    capital;
+	unsigned long long	res;
+    unsigned long long    capital;
     // depends of what kind of flag is used, it'll add the correct number to
     // get the correct output
     if (x == 88)

@@ -8,7 +8,8 @@ AR = ar rcs
 
 RM = rm -f
 
-SRCS =	srcs/ft_hexa.c \
+SRCS =	srcs/ft_printf.c \
+		srcs/ft_hexa.c \
 		srcs/ft_hexa_void.c \
 		srcs/ft_putchar.c \
 		srcs/ft_putstr.c \

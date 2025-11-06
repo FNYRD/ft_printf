@@ -13,7 +13,7 @@ static char *helper(void)
     return p;
 }
 
-char	*ft_hexa(unsigned int n, char x)
+char	*ft_hexa(unsigned long long n, char x)
 {
 	unsigned int	res;
     unsigned int    capital;
