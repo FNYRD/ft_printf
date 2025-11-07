@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jericard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jericard <jericard@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/24 13:44:18 by jericard          #+#    #+#             */
-/*   Updated: 2025/10/24 13:44:20 by jericard         ###   ########.fr       */
+/*   Created: 2025/10/29 15:55:05 by jericard          #+#    #+#             */
+/*   Updated: 2025/10/29 15:55:07 by jericard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	size_t	i;
 
+	if (!s)
+		return ;
 	i = 0;
 	while (s[i])
 	{

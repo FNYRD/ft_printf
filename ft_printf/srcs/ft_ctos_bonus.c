@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_ctos_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jericard <jericard@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/29 15:48:21 by jericard          #+#    #+#             */
-/*   Updated: 2025/10/29 15:48:23 by jericard         ###   ########.fr       */
+/*   Created: 2025/11/06 17:05:27 by jericard          #+#    #+#             */
+/*   Updated: 2025/11/06 17:05:29 by jericard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_ctos(char c)
 {
-	const unsigned char	*s1;
+	char	*s;
 
-	s1 = (const unsigned char *)s;
-	while (n > 0)
-	{
-		if (*s1 == (unsigned char)c)
-			return ((void *)s1);
-		n--;
-		s1++;
-	}
-	return (NULL);
+	s = malloc(2 * sizeof(char));
+	if (!s)
+		return (NULL);
+	s[0] = c;
+	s[1] = '\0';
+	return (s);
 }

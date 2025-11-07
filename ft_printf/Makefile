@@ -9,10 +9,18 @@ AR = ar rcs
 RM = rm -f
 
 SRCS =	srcs/ft_printf.c \
-		srcs/ft_hexa.c \
+		srcs/ft_hexa_bonus.c \
 		srcs/ft_hexa_void.c \
-		srcs/ft_putchar.c \
-		srcs/ft_putstr.c \
+		srcs/ft_putchar_bonus.c \
+		srcs/ft_putstr_bonus.c \
+		srcs/ft_ctos_bonus.c \
+		srcs/ft_utoa_bonus.c \
+		srcs/ft_flag_bonus.c \
+		srcs/ft_skipping.c \
+		srcs/ft_datatype.c \
+		srcs/ft_width_bonus.c \
+		srcs/ft_precision_bonus.c \
+		srcs/ft_stringer_bonus.c \
 		srcs/ft_dotcase_bonus.c \
 		srcs/ft_putminzero_bonus.c \
 		srcs/ft_count_0xchar_bonus.c \

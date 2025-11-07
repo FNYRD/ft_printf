@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_utoa_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jericard <jericard@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/29 15:53:59 by jericard          #+#    #+#             */
-/*   Updated: 2025/10/29 15:54:00 by jericard         ###   ########.fr       */
+/*   Created: 2025/11/06 17:24:49 by jericard          #+#    #+#             */
+/*   Updated: 2025/11/06 17:24:50 by jericard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-static size_t	counting(int n)
+static size_t	counting(unsigned int num)
 {
 	size_t	len;
-	long	num;
 
 	len = 0;
-	if (n < 0)
-	{
-		num = (-(long)n);
-		len++;
-	}
-	else
-		num = (long)n;
 	while (num > 0)
 	{
 		num /= 10;
 		len++;
 	}
-	if (n == 0)
-		len++;
 	return (len);
 }
 
-static void	writing(char *s, size_t	*i, long num)
+static void	writing(char *s, size_t	*i, unsigned int num)
 {
 	if (num > 9)
 		writing(s, i, (num / 10));
@@ -43,27 +33,20 @@ static void	writing(char *s, size_t	*i, long num)
 	(*i)++;
 }
 
-char	*ft_itoa(int n)
+char	*ft_utoa(unsigned int num)
 {
 	size_t	i;
 	size_t	len;
 	char	*s;
-	long	num;
 
 	i = 0;
-	len = counting(n);
-	num = 0;
+	if (num == 0)
+		len = 1;
+	else
+		len = counting(num);
 	s = (char *)malloc((len + 1) * sizeof(char));
 	if (!s)
 		return (NULL);
-	if (n < 0)
-	{
-		s[i] = '-';
-		num = (-(long)n);
-		i++;
-	}
-	else
-		num = (long)n;
 	writing(s, &i, num);
 	s[len] = '\0';
 	return (s);

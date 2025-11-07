@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putminzero_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jericard <jericard@student.42porto.co      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/06 13:07:28 by jericard          #+#    #+#             */
+/*   Updated: 2025/11/06 13:07:30 by jericard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static void	helper(char *str, unsigned long long positions, unsigned long long flag)
+static void	helper(char *str, unsigned long long positions,
+					unsigned long long flag)
 {
 	if (flag == 1)
 	{
@@ -12,7 +25,7 @@ static void	helper(char *str, unsigned long long positions, unsigned long long f
 	{
 		while (positions-- > 0)
 			ft_putchar('0');
-		ft_putstr(str);	
+		ft_putstr(str);
 	}
 	else
 	{
@@ -21,11 +34,12 @@ static void	helper(char *str, unsigned long long positions, unsigned long long f
 		ft_putstr(str);
 	}
 }
-// flag 1 will indicate that flag == -, flag 0 == 0
-void	ft_putminzero(char *str, unsigned long long positions, unsigned long long flag)
+
+void	ft_putminzero(char *str, unsigned long long positions,
+			unsigned long long flag)
 {
 	unsigned long long	len;
-	char			*ptr;
+	char				*ptr;
 
 	len = ft_strlen(str);
 	if (positions <= len)
@@ -36,7 +50,6 @@ void	ft_putminzero(char *str, unsigned long long positions, unsigned long long f
 	if (str[0] == '-')
 	{
 		ptr = &str[1];
-		// positions--;
 		ft_putchar('-');
 	}
 	else

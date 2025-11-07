@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_putstr_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jericard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jericard <jericard@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/24 16:56:00 by jericard          #+#    #+#             */
-/*   Updated: 2025/10/24 16:56:01 by jericard         ###   ########.fr       */
+/*   Created: 2025/11/06 13:08:01 by jericard          #+#    #+#             */
+/*   Updated: 2025/11/06 13:08:03 by jericard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_putstr(char *s)
 {
-    t_list  *last_node;
+	unsigned long	i;
 
-	if (!lst || !new)
+	if (!s)
 		return ;
-	if (!*lst)
+	i = 0;
+	while (s[i])
 	{
-		*lst = new;
-		return ;
+		ft_putchar(s[i]);
+		i++;
 	}
-    last_node = ft_lstlast(*lst);
-    last_node->next = new;
 }

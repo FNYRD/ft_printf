@@ -2,22 +2,24 @@
 #include <unistd.h>
 #include "ft_printf.h"
 #include "libft.h"
-#include "test.h"
+
+int probe(char *fmt, ...)
+{
+    va_list ap;
+    int     width;
+
+    va_start(ap, fmt);
+    width = ft_width(fmt, &ap);
+    va_end(ap);
+    return width;
+}
 
 int main(void)
 {
-	// char	*p;
+	int	n;
 
-	ft_printf("hola que tal");
-    // printf("%d", ft_count_0xchar(255));
-	// ft_dotcase("0x", 6, 6, 0);
-	// p = ft_substr("(null)", 0, 3);
-	// ft_putminzero("%", 5, 0);
-	// printf("%s", p);
-	// ft_putstr(p);
-	// printf("Original: %p\n", p);
-	// printf("0x");
-	// ft_putminzero(ft_hexa((unsigned long long)p,'x'), 13, 0);
+	n = ft_precision("#-045 46.343");
+	printf("%d", n);
 	return (0);
 }
 

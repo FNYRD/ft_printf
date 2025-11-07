@@ -1,10 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_dotcase_bonus.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jericard <jericard@student.42porto.co      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/06 13:06:08 by jericard          #+#    #+#             */
+/*   Updated: 2025/11/06 13:06:10 by jericard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-// if precision < positions we'll use the difference between positions - precision
-// else, we'll use precision as positions
-// in cases with just the flag '.' (without '-')we'll use ft_putminzero with the 0 flag
-// in case fo flag == 1 it means that there's a '-' (left indentation) present
-void	ft_dotcase(char *str, unsigned long long positions, unsigned long long precision, unsigned long long flag)
+void	ft_dotcase(char *str,
+			unsigned long long positions,
+			unsigned long long precision, unsigned long long flag)
 {
 	if (precision < positions)
 	{

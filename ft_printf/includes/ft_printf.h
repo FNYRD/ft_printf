@@ -14,9 +14,17 @@ void	ft_hexa_void(unsigned long long n, char x);
 void	ft_putminzero(char *str, unsigned long long positions, unsigned long long flag);
 void	ft_dotcase(char *str, unsigned long long positions, unsigned long long precision, unsigned long long flag);
 
-char	*ft_hexa(unsigned long long n, char x);
+char	*ft_ctos(char c);
+char	*ft_utoa(unsigned int n);
+char	*ft_stringer(char c, va_list *arg);
+char	*ft_hexa_bonus(unsigned long long n, char x);
 
-int     ft_printf(const char *, ...);
-int     ft_count_0xchar(unsigned long long n);
+int		ft_flag(char *str);
+int		ft_datatype(char c);
+int		ft_skipping(char c);
+int		ft_precision(char *str);
+int		ft_width(char *str, va_list *arg);
+int		ft_printf(const char *, ...);
+int		ft_count_0xchar(unsigned long long n);
 
 #endif
