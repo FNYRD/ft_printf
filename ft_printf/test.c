@@ -16,10 +16,7 @@ int probe(char *fmt, ...)
 
 int main(void)
 {
-	int	n;
-
-	n = ft_precision("#-045 46.343");
-	printf("%d", n);
+	ft_printf("numero %010.0d", 4000);
 	return (0);
 }
 

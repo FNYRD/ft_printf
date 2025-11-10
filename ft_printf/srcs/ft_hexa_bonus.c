@@ -24,7 +24,7 @@ static char	*helper(void)
 	return (p);
 }
 
-static unsigned int	ft_capital(char x)
+static unsigned int	ft_capital(const char x)
 {
 	unsigned int	capital;
 
@@ -35,7 +35,7 @@ static unsigned int	ft_capital(char x)
 	return (capital);
 }
 
-char	*ft_hexa(unsigned long long n, char x)
+char	*ft_hexa(unsigned long long n, const char x)
 {
 	unsigned int	res;
 	unsigned int	capital;

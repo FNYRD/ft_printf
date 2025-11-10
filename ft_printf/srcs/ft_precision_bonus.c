@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static unsigned int	verifyer(char c)
+static unsigned int	verifyer(const char c)
 {
 	if (!c)
 		return (0);
@@ -35,7 +35,7 @@ static unsigned int	verifyer(char c)
 	return (0);
 }
 
-int ft_precision(char *str)
+int ft_precision(const char *str)
 {
 	int		i;
     int     flag;

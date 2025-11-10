@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char	*ft_ctos(char c)
+char	*ft_ctos(const char c)
 {
 	char	*s;
 

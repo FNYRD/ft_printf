@@ -12,25 +12,12 @@
 
 #include "ft_printf.h"
 
-int	ft_datatype(char c)
+char	ft_datatype(const char *ptr)
 {
-	if (!c)
-		return (0);
-	if (c == 'c')
-		return (1);
-	else if (c == 's')
-		return (1);
-	else if (c == 'p')
-		return (1);
-	else if (c == 'd')
-		return (1);
-	else if (c == 'i')
-		return (1);
-	else if (c == 'u')
-		return (1);
-	else if (c == 'x' || c == 'X')
-		return (1);
-	else if (c == '%')
-		return (1);
-	return (0);
+	int	i;
+	
+	i = 0;
+	while (ft_skipping(ptr[i]))
+		i++;
+	return (ptr[i]);
 }

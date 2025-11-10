@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_hexa_void(unsigned long long n, char x)
+void	ft_hexa_void(unsigned long long n, const char x)
 {
 	unsigned long long	res;
 	unsigned long long	capital;

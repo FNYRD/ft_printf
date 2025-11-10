@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int ft_skipping(char c)
+int ft_skipping(const char c)
 {
 	if (!c)
 		return (0);

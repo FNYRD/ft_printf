@@ -12,10 +12,12 @@
 
 #include "ft_printf.h"
 
-void	ft_dotcase(char *str,
+void	ft_dotcase(const char *str,
 			unsigned long long positions,
 			unsigned long long precision, unsigned long long flag)
 {
+	if (str[0] == '-')
+		precision++;
 	if (precision < positions)
 	{
 		positions -= precision;
@@ -34,8 +36,6 @@ void	ft_dotcase(char *str,
 	}
 	else
 	{
-		if (str[0] == '-')
-			precision++;
 		ft_putminzero(str, precision, 0);
 	}
 }

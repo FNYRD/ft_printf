@@ -23,10 +23,10 @@ static char	*helper(va_list *arg)
 		return (ft_strdup(ptr));
 }
 
-char	*ft_stringer(char c, va_list *arg)
+char	*ft_stringer(const char c, va_list *arg)
 {
 	if (c == 'x' || c == 'X')
-		return (ft_hexa_bonus(va_arg(*arg, unsigned int), c));
+		return (ft_hexa(va_arg(*arg, unsigned int), c));
 	else if (c == 'u')
 		return (ft_utoa(va_arg(*arg, unsigned int)));
 	else if (c == 'd' || c == 'i')
@@ -41,6 +41,6 @@ char	*ft_stringer(char c, va_list *arg)
 	else if (c == 's')
 		return (helper(arg));
 	else if (c == 'p')
-		return (ft_hexa_bonus(((unsigned long long)va_arg(*arg, void *)), 'x'));
+		return (ft_hexa(((unsigned long long)va_arg(*arg, void *)), 'x'));
 	return (NULL);
 }

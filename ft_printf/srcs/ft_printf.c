@@ -11,19 +11,39 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h> //BORRAR!
+
+void	helper(const char *format, va_list *arg)
+{
+	char	*data;
+	data = ft_stringer(ft_datatype(format), arg);
+	ft_manager(data ,ft_precision(format), ft_width(format, arg), ft_flag(format), ft_datatype(format));
+	// ft_putstr(data); // SOLO PARA VERIFICAR, NO ES NECESARIO
+	free(data);
+}
 
 int	ft_printf(const char *format, ...)
 {
-	// va_list	arg;
-	// int		i;
-	(void)format;
-	// i = -1;
-	// va_start(arg, format);
-	// while (format[++i])
-	// {
-	// 	if (format[i] == '%')
-	// 	free(ptr);
-	// }
-	// va_end(arg);
+	va_list	arg;
+	int		i;
+
+	i = 0;
+	va_start(arg, format);
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			i++;
+			helper(&format[i], &arg);
+			while (ft_skipping(format[i]))
+				i++;
+			if (format[i])
+				i++;
+			continue;
+		}
+		ft_putchar(format[i]);
+		i++;
+	}
+	va_end(arg);
 	return (0);
 }

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_putstr(char *s)
+void	ft_putstr(const char *s)
 {
 	unsigned long	i;
 

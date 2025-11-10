@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static unsigned int	verifyer(char c)
+static unsigned int	verifyer(const char c)
 {
 	if (!c)
 		return (0);
@@ -38,7 +38,7 @@ static unsigned int	verifyer(char c)
 static int	flagger_dash(int flag)
 {
 	if (flag < 1)
-		flag++;
+		flag = 1;
 	else
 		flag--;
 	return (flag);
@@ -47,13 +47,13 @@ static int	flagger_dash(int flag)
 static int	flagger_dot(int flag)
 {
 	if (flag == 1)
-		flag += 1;
+		flag ++;
 	else
-		flag += 3;
+		flag = 3;
 	return (flag);
 }
 
-int	ft_flag(char *str)
+int	ft_flag(const char *str)
 {
 	int	i;
 	int	flag;

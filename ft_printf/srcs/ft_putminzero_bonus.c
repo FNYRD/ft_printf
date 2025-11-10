@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void	helper(char *str, unsigned long long positions,
+static void	helper(const char *str, unsigned long long positions,
 					unsigned long long flag)
 {
 	if (flag == 1)
@@ -35,11 +35,11 @@ static void	helper(char *str, unsigned long long positions,
 	}
 }
 
-void	ft_putminzero(char *str, unsigned long long positions,
+void	ft_putminzero(const char *str, unsigned long long positions,
 			unsigned long long flag)
 {
 	unsigned long long	len;
-	char				*ptr;
+	const char			*ptr;
 
 	len = ft_strlen(str);
 	if (positions <= len)
