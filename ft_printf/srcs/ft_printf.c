@@ -16,9 +16,9 @@
 void	helper(const char *format, va_list *arg)
 {
 	char	*data;
+
 	data = ft_stringer(ft_datatype(format), arg);
-	ft_manager(data ,ft_precision(format), ft_width(format, arg), ft_flag(format), ft_datatype(format));
-	// ft_putstr(data); // SOLO PARA VERIFICAR, NO ES NECESARIO
+	ft_manager(data, ft_precision(format), ft_width(format, arg), ft_flag(format), ft_datatype(format), signalflag(format));
 	free(data);
 }
 
@@ -39,7 +39,7 @@ int	ft_printf(const char *format, ...)
 				i++;
 			if (format[i])
 				i++;
-			continue;
+			continue ;
 		}
 		ft_putchar(format[i]);
 		i++;
@@ -47,3 +47,6 @@ int	ft_printf(const char *format, ...)
 	va_end(arg);
 	return (0);
 }
+// la linea es demasido larga por lo que voy a tener que hacer una linea mas corta pasando solo format y arg,
+// recibiendo en la otra funcion de manager y separandolo todo en variables, dentro de la separacion de variables 
+// comenzar a usarla con la funcion que ya esxiste

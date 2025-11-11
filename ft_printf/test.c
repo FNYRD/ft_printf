@@ -16,7 +16,7 @@ int probe(char *fmt, ...)
 
 int main(void)
 {
-	ft_printf("numero %010.0d", 4000);
+	ft_printf("numero %010.0i \n y otro: %u", -4000, 100);
 	return (0);
 }
 

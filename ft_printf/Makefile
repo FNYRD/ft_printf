@@ -18,6 +18,7 @@ SRCS =	srcs/ft_printf.c \
 		srcs/ft_flag_bonus.c \
 		srcs/ft_skipping.c \
 		srcs/ft_datatype.c \
+		srcs/ft_signalflag_bonus.c \
 		srcs/ft_manager.c \
 		srcs/ft_width_bonus.c \
 		srcs/ft_precision_bonus.c \

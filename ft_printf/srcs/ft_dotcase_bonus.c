@@ -12,30 +12,37 @@
 
 #include "ft_printf.h"
 
-void	ft_dotcase(const char *str,
-			unsigned long long positions,
-			unsigned long long precision, unsigned long long flag)
+static size_t	helper(const char *str, size_t positions, size_t precision, size_t flag)
+{
+	size_t	len;
+
+	positions -= precision;
+	len = positions;
+	if (flag)
+	{
+		len += ft_putminzero(str, precision, 0);
+		while (positions-- > 0)
+			ft_putchar(' ');
+	}
+	else
+	{
+		while (positions-- > 0)
+			ft_putchar(' ');
+		len += ft_putminzero(str, precision, 0);
+	}
+	return (len);
+}
+
+size_t	ft_dotcase(const char *str, size_t positions, size_t precision, size_t flag)
 {
 	if (str[0] == '-')
 		precision++;
 	if (precision < positions)
 	{
-		positions -= precision;
-		if (flag)
-		{
-			ft_putminzero(str, precision, 0);
-			while (positions-- > 0)
-				ft_putchar(' ');
-		}
-		else
-		{
-			while (positions-- > 0)
-				ft_putchar(' ');
-			ft_putminzero(str, precision, 0);
-		}
+		return (helper(str, positions, precision, flag));
 	}
 	else
 	{
-		ft_putminzero(str, precision, 0);
+		return (ft_putminzero(str, precision, 0));
 	}
 }
