@@ -11,14 +11,13 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h> //BORRAR!
 
-void	helper(const char *format, va_list *arg)
+void	sender2manager(const char *format, va_list *arg)
 {
 	char	*data;
 
 	data = ft_stringer(ft_datatype(format), arg);
-	ft_manager(data, ft_precision(format), ft_width(format, arg), ft_flag(format), ft_datatype(format), signalflag(format));
+	ft_manager(data, format, arg);
 	free(data);
 }
 
@@ -34,7 +33,7 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			helper(&format[i], &arg);
+			sender2manager(&format[i], &arg);
 			while (ft_skipping(format[i]))
 				i++;
 			if (format[i])
@@ -50,3 +49,22 @@ int	ft_printf(const char *format, ...)
 // la linea es demasido larga por lo que voy a tener que hacer una linea mas corta pasando solo format y arg,
 // recibiendo en la otra funcion de manager y separandolo todo en variables, dentro de la separacion de variables 
 // comenzar a usarla con la funcion que ya esxiste
+
+// antiguo helper // Notas para la funcion principal:
+
+// con %s NULL se pasa en hardcode (null)
+
+// la precision con %s si es menor que su len se recorta, sino se imprime tal cual
+
+
+// |%-18p| con (void *)0 se borra porque el “caso especial cero con precisión cero” siempre 
+// se ejecuta: en padding (ft_printf/srcs/ft_manager.c (lines 35-41)) se comprueba 
+// ft_precision(format) == 0 sin verificar si realmente había un .. Tu ft_precision devuelve 0 incluso 
+// cuando no hay precisión, así que para %p normal se entra en el bloque y data se reemplaza por "". 
+// Solución rápida: solo apliques ese borrado cuando el flag indique un formato con . (flag 2 o 3), o 
+// haz que ft_precision devuelva -1 cuando no haya . y compara contra ese valor. Con ese cambio el 
+// puntero nulo imprimirá 0x0 y seguirás cumpliendo la regla de “no imprimir nada” únicamente cuando la 
+// precisión se indicó explícitamente como 0.
+
+
+//		ft_manager(data, ft_precision(format), ft_width(format, arg), ft_flag(format), ft_datatype(format), signalflag(format));

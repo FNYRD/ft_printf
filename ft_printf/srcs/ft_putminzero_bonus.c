@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void	helper(const char *str, size_t positions, size_t flag)
+static void	printing_padding(const char *str, size_t positions, size_t flag)
 {
 	if (flag == 1)
 	{
@@ -34,6 +34,30 @@ static void	helper(const char *str, size_t positions, size_t flag)
 	}
 }
 
+static const char	*hexapointcase(size_t flag, const char *str, size_t *printed)
+{
+	if (flag == 0 || flag == 1)
+	{
+		ft_putchar('0');
+		ft_putchar(str[1]);
+		*printed += 2;
+		return (str + 2);
+	}
+	return (str);
+}
+static const char	*direction(size_t flag, const char *str, size_t *printed)
+{
+	if (str[1] == 'x' || str[1] == 'X')
+		return (hexapointcase(flag, str, printed));
+	else if (flag == 0 || flag == 1)
+	{
+		ft_putchar(str[0]);
+		*printed += 1;
+		return (str + 1);
+	}
+	return (str);
+}
+
 size_t	ft_putminzero(const char *str, size_t positions, size_t flag)
 {
 	size_t		len;
@@ -47,14 +71,16 @@ size_t	ft_putminzero(const char *str, size_t positions, size_t flag)
 		ft_putstr(str);
 		return (len);
 	}
-	if (str[0] == '-')
+	if (str[0] == '-' && (flag == 1 || flag == 0))
 	{
 		ptr = &str[1];
 		ft_putchar('-');
 		printed++;
 	}
+	else if (len > 1 && (str[0] == '0' || str[0] == ' ' || str[0] == '+'))
+		ptr = direction(flag, str, &printed);
 	else
 		ptr = str;
-	helper(ptr, (positions -= len), flag);
+	printing_padding(ptr, (positions -= len), flag);
 	return (printed + positions  + ft_strlen(ptr));
 }

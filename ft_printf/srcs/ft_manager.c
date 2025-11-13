@@ -12,39 +12,109 @@
 
 #include "ft_printf.h"
 
-static size_t	padding(const char *data, int precision, size_t width, int flag)
+static void	width_positive(long long *width, int *flag)
 {
-	if (data == 0 && precision == 0)
+	if (*(width) < 0)
 	{
-		data = "";
-		return (0);
+		*(width) = -*(width);
+		if (*(flag) < 1)
+			*(flag) = 1;
+		else if (*(flag) == 3)
+			*(flag) = 2;
 	}
-	if (flag == 0)
+}
+
+static size_t	padding(const char *data, va_list *arg, const char *format)
+{
+	long long	width;
+	int			flag;
+
+	flag = ft_flag(format);
+	width = ft_width(format, arg);
+	width_positive(&width, &flag);
+	if (!data)
+		return (0);
+	if ((ft_precision(format) == 0 && data[0] == '0') && width)
+		data = "";
+	else if (ft_precision(format) == 0 && data[0] == '0' && !width)
+		return (0);
+	if (flag == 0  || (flag < 0 && width))
 		return (ft_putminzero(data, width, flag));
 	else if (flag == 1)
 		return (ft_putminzero(data, width, flag));
 	else if (flag == 2)
-		return (ft_dotcase(data, width, precision, 1));
+		return (ft_dotcase(data, width, ft_precision(format), 1));
 	else if (flag == 3)
-		return (ft_dotcase(data, width, precision, 0));
+		return (ft_dotcase(data, width, ft_precision(format), 0));
 	else
-		return (ft_putstr(data));
+		ft_putstr(data);
+	return (ft_strlen(data));
 }
 
-size_t	ft_manager(const char *data, int precision, int width, int flag, int signalflag, char type)
+static size_t	hexapoint(const char *data, const char *format, va_list *arg)
 {
-	long long	width2;
+	char	*temp;
+	size_t	printed;
 
-	width2 = width;
-	if (width2 < 0 )
+	temp = NULL;
+	if (ft_datatype(format) == 'p' || ft_signalflag(format) >= 10)
 	{
-		width2 = -width2;
-		if (flag < 1)
-			flag = 1;
-		else if (flag == 3)
-			flag = 2;
+		if (ft_datatype(format) == 'X')
+			temp = ft_strjoin("0X", data);
+		else
+			temp = ft_strjoin("0x", data);
+		printed = padding(temp, arg, format);
+		free(temp);
+		return (printed);
 	}
-	if (type == 'd' || type == 'u' || type == 'i')
-		return (padding(data, precision, width2, flag));
+	(void)temp;
+	return (padding(data, arg, format));
 }
-// recibir las flags y luego distribuirlas 
+
+static size_t	numbers(const char *data, const char *format, va_list *arg, char type)
+{
+	char	*temp;
+	size_t	printed;
+
+	temp = NULL;
+	if ((type == 'd' || type == 'i') && data[0] != '-' )
+	{
+		if (ft_signalflag(format) == 1)
+			temp = ft_strjoin(" ", data);
+		else if (ft_signalflag(format) == 2)
+			temp = ft_strjoin("+", data);
+		if (temp)
+		{
+			printed = padding(temp, arg, format);
+			free(temp);
+			return (printed);	
+		}
+	}
+	(void)temp;
+	return (padding(data, arg, format));	
+}
+
+size_t	ft_manager(const char *data, const char *format, va_list *arg)
+{
+	char	type;
+
+	type = ft_datatype(format);
+	if (type == 'd' || type == 'u' || type == 'i')
+		return (numbers(data, format, arg, type));
+	else if (type == 'x' || type == 'X' || type == 'p')
+		return (hexapoint(data, format, arg));
+	else
+		return (0);
+}
+// Crear las impresions para hexa y pointer
+
+
+
+
+
+
+// antiguo manager
+//	size_t	ft_manager(const char *data, int precision, int width, int flag, int signalflag, char type)
+
+// antiguo padding
+//	static size_t	padding(const char *data, int precision, size_t width, int flag)

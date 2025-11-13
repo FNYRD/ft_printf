@@ -53,5 +53,7 @@ int ft_precision(const char *str)
 		else if (flag == 1 && (str[i] >= '0' && str[i] <= '9') && precision > 0)
 			precision = (precision * 10) + (str[i] - '0');
 	}
+	if (!flag)
+		return (-1);
 	return (precision);
 }

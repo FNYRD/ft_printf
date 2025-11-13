@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	signalflag(const char *str)
+int	ft_signalflag(const char *str)
 {
 	int	flag;
 	int	i;

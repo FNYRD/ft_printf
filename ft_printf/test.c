@@ -16,17 +16,12 @@ int probe(char *fmt, ...)
 
 int main(void)
 {
-	ft_printf("numero %010.0i \n y otro: %u", -4000, 100);
+    // size_t  prints;
+
+	ft_printf("|%+08d|\n", 33);
+    // ft_printf("caracteres impresos: %d\n", prints);
 	return (0);
 }
 
-// Notas para la funcion principal:
-
-// con %s NULL se pasa en hardcode (null)
-
-// %% y %X necesitaran hardcode para %x y %p con precision 0 (0X o 0x) y con % para usar el literal e imprimirlo
-// con las flags width, - y 0
-
-// la precision con %s si es menor que su len se recorta, sino se imprime tal cual
-
-// la precision con digitos, si es mayor que su len rellena con 0 sino se imprimi tal cual esta
+// aparentemente ya esta listo todo para formato numerico
+// solo falta tratar los casos de string y char con precision y -
