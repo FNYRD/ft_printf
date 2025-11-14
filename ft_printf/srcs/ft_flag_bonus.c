@@ -57,17 +57,21 @@ int	ft_flag(const char *str)
 {
 	int	i;
 	int	flag;
+	int	width_started;
 
+	width_started = 0;
 	flag = -1;
 	i = -1;
 	while (verifyer(str[++i]))
 	{
-		if (str[i] == '0' && flag < 1)
+		if (str[i] == '0' && flag < 1 && width_started == 0)
 			flag = 0;
 		if (str[i] == '-')
 			flag = flagger_dash(flag);
 		if (str[i] == '.')
 			flag = flagger_dot(flag);
+		if (str[i] == '*' || (str[i] >= '1' && str[i] <= '9'))
+			width_started = 1;
 	}
 	return (flag);
 }

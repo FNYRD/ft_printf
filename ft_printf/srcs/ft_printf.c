@@ -66,5 +66,7 @@ int	ft_printf(const char *format, ...)
 // puntero nulo imprimirá 0x0 y seguirás cumpliendo la regla de “no imprimir nada” únicamente cuando la 
 // precisión se indicó explícitamente como 0.
 
+// aparentemente ya esta listo todo para formato numerico
+// solo falta tratar los casos de string y char con precision y -
 
 //		ft_manager(data, ft_precision(format), ft_width(format, arg), ft_flag(format), ft_datatype(format), signalflag(format));

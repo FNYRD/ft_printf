@@ -35,9 +35,18 @@ static size_t	helper(const char *str, size_t positions, size_t precision, size_t
 
 size_t	ft_dotcase(const char *str, size_t positions, size_t precision, size_t flag)
 {
-	if (str[0] == '-')
+	size_t len;
+
+	len = ft_strlen(str);
+	if (str[0] == '-' || str[0] == ' ' || str[0] == '+')
+	{
 		precision++;
-	if (precision < positions)
+		len--;
+	}
+	if (str[0] == '0' && (str[1] == 'x' || str[1] == 'X'))
+		precision += 2;
+	
+	if ((precision < positions) && (precision >len))
 	{
 		return (helper(str, positions, precision, flag));
 	}

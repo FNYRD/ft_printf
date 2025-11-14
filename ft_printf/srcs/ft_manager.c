@@ -108,7 +108,12 @@ size_t	ft_manager(const char *data, const char *format, va_list *arg)
 }
 // Crear las impresions para hexa y pointer
 
-
+// No así. hexapoint siempre termina liberando la cadena que r
+// ecibe (después de ft_strjoin hace free(temp)), así que si le pasas el literal "0x0" 
+// terminarías haciendo un free sobre memoria estática y se rompería todo. Si quieres construir 
+// 0x0 manualmente, crea una copia dinámica (por ejemplo con ft_strdup("0"), concatena tú el prefijo 
+// y luego pásala a hexapoint; o mejor, deja que hexapoint reciba la cadena "0" y, antes de prefijar, 
+// compruebe if (data[0] == '0' && data[1] == '\0') para saltarse ese ft_strjoin.
 
 
 

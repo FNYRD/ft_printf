@@ -16,12 +16,24 @@ int probe(char *fmt, ...)
 
 int main(void)
 {
-    // size_t  prints;
+    void *ptr = (void *)0x12345;
 
-	ft_printf("|%+08d|\n", 33);
-    // ft_printf("caracteres impresos: %d\n", prints);
-	return (0);
+    ft_printf("|%-#20p|", ptr);
+    // printf    ("|%-#20p|", ptr);
+
+    ft_printf("|%020p|", ptr);
+    // printf    ("|%020p|", ptr);
+
+
+    return (0);
+
+
+
 }
 
-// aparentemente ya esta listo todo para formato numerico
-// solo falta tratar los casos de string y char con precision y -
+// erroes
+
+// ft_printf("|%10.3u|", 4294967295);|     4294967295|% 
+
+// NULL => (null)
+// !P => (nil)
