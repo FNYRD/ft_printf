@@ -24,7 +24,7 @@ char	*ft_ctos(const char c);
 char	*ft_utoa(unsigned int n);
 char	ft_datatype(const char *ptr);
 char	*ft_hexa(unsigned long long n, char x);
-char	*ft_stringer(const char c, va_list *arg, const char *format);
+char	*ft_stringer(const char c, va_list *arg);
 
 int		ft_flag(const char *str);
 int		ft_width(const char *str);

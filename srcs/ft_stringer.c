@@ -71,4 +71,3 @@ char	*ft_stringer(const char c, va_list *arg)
 	}
 	return (NULL);
 }
-
