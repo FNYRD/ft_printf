@@ -20,13 +20,13 @@ AR = ar rcs
 
 RM = rm -f
 
-srcs =	srcs/ft_printf.c
-		srcs/ft_count_0xchar.c
-		srcs/ft_ctos.c
-		srcs/ft_hexa.c
-		srcs/ft_putchar.c
-		srcs/ft_putstr.c
-		srcs/ft_stringer.c
+srcs =	srcs/ft_printf.c \
+		srcs/ft_count_0xchar.c \
+		srcs/ft_ctos.c \
+		srcs/ft_hexa.c \
+		srcs/ft_putchar.c \
+		srcs/ft_putstr.c \
+		srcs/ft_stringer.c \
 		srcs/ft_utoa.c
 
 bsrcs =	bsrcs/ft_count_0xchar_bonus.c \
