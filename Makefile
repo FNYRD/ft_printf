@@ -30,7 +30,7 @@ srcs =	srcs/ft_printf.c \
 		srcs/ft_utoa.c
 
 bsrcs =	bsrcs/ft_count_0xchar_bonus.c \
-		bbsrcs/ft_ctos_bonus.c \
+		bsrcs/ft_ctos_bonus.c \
 		bsrcs/ft_datatype_bonus.c \
 		bsrcs/ft_dotcase_bonus.c \
 		bsrcs/ft_flag_bonus.c \
