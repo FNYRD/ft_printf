@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ctos.c                                          :+:      :+:    :+:   */
+/*   ft_datatype.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jericard <jericard@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/30 12:22:43 by jericard          #+#    #+#             */
-/*   Updated: 2025/12/30 12:22:45 by jericard         ###   ########.fr       */
+/*   Created: 2025/12/30 12:22:56 by jericard          #+#    #+#             */
+/*   Updated: 2025/12/30 12:22:57 by jericard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_ctos(const char c)
+char	ft_datatype(const char *ptr)
 {
-	char	*s;
+	int	i;
 
-	s = malloc(2 * sizeof(char));
-	if (!s)
-		return (NULL);
-	s[0] = c;
-	s[1] = '\0';
-	return (s);
+	i = 0;
+	while (ft_skipping(ptr[i]))
+		i++;
+	return (ptr[i]);
 }

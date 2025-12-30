@@ -20,14 +20,26 @@ AR = ar rcs
 
 RM = rm -f
 
-srcs =	srcs/ft_printf.c \
-		srcs/ft_count_0xchar.c \
+srcs =	srcs/ft_count_0xchar.c \
 		srcs/ft_ctos.c \
+		srcs/ft_datatype.c \
+		srcs/ft_dotcase.c \
+		srcs/ft_flag.c \
 		srcs/ft_hexa.c \
+		srcs/ft_manager.c \
+		srcs/ft_onlywods.c \
+		srcs/ft_padding_helper.c \
+		srcs/ft_precision.c \
 		srcs/ft_putchar.c \
+		srcs/ft_putminzero.c \
 		srcs/ft_putstr.c \
+		srcs/ft_signalflag.c \
+		srcs/ft_skipping.c \
 		srcs/ft_stringer.c \
-		srcs/ft_utoa.c
+		srcs/ft_typeverify.c \
+		srcs/ft_utoa.c \
+		srcs/ft_width.c \
+		srcs/ft_printf.c
 
 bsrcs =	bsrcs/ft_count_0xchar_bonus.c \
 		bsrcs/ft_ctos_bonus.c \

@@ -42,12 +42,17 @@ The project must be cloned from the official GitHub repository of the user **FNY
 git clone https://github.com/FNYRD/ft_printf.git
 
 After downloading the required files and folders, create a test file with any name ending in .c.
-The project file (ft_printf.c) and the test file must be located in the same directory.
+The test file must be located in the root directory of the project.
 
 ### Compilation
 
-Navigate to the root directory of the project and compile the library: 
-make 
+Navigate to the root directory of the project and compile the library:
+
+make
+
+or to compile the bonus part
+
+make bonus
 
 To remove compiled binaries, run:
 make clean
@@ -56,8 +61,9 @@ make clean
 
 The test file must include the project header:
 #include "./includes/ft_printf.h"
+#include "./includes/ft_printf_bonus.h"
 
-Compile the test file (in the next line, the file's name is just an example) together with the ft_printf library:
+Compile the test file (as in the next line, the file's name is just an example) together with the ft_printf library:
 cc -g -Wall -Wextra -Werror test_printf.c -I./includes ./libftprintf.a -o test
 
 Run the executable:

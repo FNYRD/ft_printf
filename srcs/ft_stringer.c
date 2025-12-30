@@ -5,20 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jericard <jericard@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/19 14:37:41 by jericard          #+#    #+#             */
-/*   Updated: 2025/12/19 14:37:42 by jericard         ###   ########.fr       */
+/*   Created: 2025/12/30 12:26:01 by jericard          #+#    #+#             */
+/*   Updated: 2025/12/30 12:26:03 by jericard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*helper(va_list *arg)
+static char	*helper(va_list *arg, const char *format)
 {
 	char	*ptr;
+	int		precision;
 
 	ptr = va_arg(*arg, char *);
+	precision = ft_precision(format);
 	if (ptr == NULL)
+	{
+		if (precision >= 0 && precision < 6)
+			return (ft_strdup(""));
 		return (ft_strdup("(null)"));
+	}
 	return (ft_strdup(ptr));
 }
 
@@ -32,28 +38,13 @@ static char	*charter(const char c, va_list *arg)
 	return (ft_ctos(((char)va_arg(*arg, int))));
 }
 
-static char	*hexapoint(char *data)
-{
-	char	*temp;
-
-	if (!data)
-		return (NULL);
-	temp = ft_strjoin("0x", data);
-	if (!temp)
-	{
-		free(data);
-		return (NULL);
-	}
-	free(data);
-	return (temp);
-}
-
-char	*ft_stringer(const char c, va_list *arg)
+char	*ft_stringer(const char c, va_list *arg, const char *format)
 {
 	void	*p;
 
 	if (c == 's')
-		return (helper(arg));
+		return (helper(arg, format));
+	(void)format;
 	if (c == 'x' || c == 'X')
 		return (ft_hexa(va_arg(*arg, unsigned int), c));
 	else if (c == 'u')
@@ -67,7 +58,7 @@ char	*ft_stringer(const char c, va_list *arg)
 		p = va_arg(*arg, void *);
 		if (!p)
 			return (ft_strdup("(nil)"));
-		return (hexapoint(ft_hexa((unsigned long long)p, 'x')));
+		return (ft_hexa((unsigned long long)p, 'x'));
 	}
 	return (NULL);
 }
